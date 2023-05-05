@@ -19,18 +19,25 @@ const tweetsSlice = createSlice({
   name: 'tweets',
   initialState: tweetsInitialState,
   reducers: {
-    toggleFollowing: ({ items }, action) => {
-      for (const item of items) {
+    toggleFollowing: (state, action) => {
+      for (const item of state.items) {
         if (item.id === action.payload) {
           item.following = !item.following;
-          //   if (item.following) {
-          //     items.followings.push(item);
-          //   }
+          if (item.following) {
+            state.followings.push(item);
+          } else {
+            const index = state.followings.findIndex(
+              following => following.id === item.id
+            );
+            state.followings.splice(index, 1);
+            // if (index !== -1) {
+            //   state.followings.splice(index, 1);
+            // }
+          }
           break;
         }
       }
-      },
-      
+    },
   },
   //  это работает
 

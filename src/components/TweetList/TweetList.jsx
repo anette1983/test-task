@@ -1,5 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getTweets, getStatusFilter } from 'redux/selectors';
+import {
+  getTweets,
+  getStatusFilter,
+  getFollowings,
+  selectUnfollowedTweets,
+} from 'redux/selectors';
 import { statusFilters } from 'redux/constants';
 // import css from './TaskList.module.css';
 import { Tweet } from 'components/Tweet/Tweet';
@@ -10,23 +15,36 @@ import { fetchTweets } from 'redux/operations';
 export const selectIsLoading = state => state.tweets.isLoading;
 export const selectError = state => state.tweets.error;
 
-const getVisibleTweets = (tweets, statusFilter) => {
+const getVisibleTweets = (tweets, following, unfollowed, statusFilter) => {
   switch (statusFilter) {
     case statusFilters.follow:
-      return tweets.filter(tweet => !tweet.following);
+      // return tweets.filter(tweet => !tweet.following);
+      return unfollowed;
     case statusFilters.following:
-      return tweets.filter(tweet => tweet.following);
+      // return tweets.filter(tweet => tweet.following);
+      return following;
     default:
       return tweets;
   }
 };
+// эту фкцию мемоизировать, весь лист
 
 export const TweetList = () => {
+  const followings = useSelector(getFollowings);
+
   const tweets = useSelector(getTweets);
+
+  const unfollowed = useSelector(selectUnfollowedTweets);
+
   console.log('tweets :>> ', tweets);
   const statusFilter = useSelector(getStatusFilter);
   console.log('statusFuilter :>> ', statusFilter);
-  const visibleTweets = getVisibleTweets(tweets, statusFilter);
+  const visibleTweets = getVisibleTweets(
+    tweets,
+    followings,
+    unfollowed,
+    statusFilter
+  );
   console.log('visibleTweets :>> ', visibleTweets);
 
   //  const isLoading = useSelector(selectIsLoading);
