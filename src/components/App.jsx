@@ -1,8 +1,22 @@
-// const Home = lazy(() => import('../pages/Home.jsx'));
-// const Register = lazy(() => import('../pages/Register.jsx'));
-// const Login = lazy(() => import('../pages/Login.jsx'));
-// const Contacts = lazy(() => import('../pages/Contacts.jsx'));
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './Layout/Layout.jsx';
+
+const Home = lazy(() => import('../pages/Home/Home.jsx'));
+const Tweets = lazy(() => import('../pages/Tweets/Tweets.jsx'));
+
+// import { Card } from './Card/Card';
 
 export const App = () => {
-  return <div>ДІВ</div>;
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="tweets" element={<Tweets />} />
+        <Route path="*" element={<Home />} />
+      </Route>
+
+      {/* перероверить, так ли */}
+    </Routes>
+  );
 };
