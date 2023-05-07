@@ -8,6 +8,7 @@ import { App } from 'components/App';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -24,11 +25,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       theme="colored"
     />
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
-      <BrowserRouter basename="/test-task">
-        <App />
-      </BrowserRouter>
-      {/* </PersistGate> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter basename="/test-task">
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

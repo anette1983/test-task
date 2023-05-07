@@ -17,7 +17,7 @@ import { filtersReducer } from './filtersSlice';
 const tweetsPersistConfig = {
   key: 'tweets',
   storage: storage,
-  whitelist: ['followings'],
+  whitelist: [],
 };
 
 const rootReducer = combineReducers({

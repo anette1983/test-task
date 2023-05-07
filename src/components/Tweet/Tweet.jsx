@@ -1,25 +1,82 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getStatusFilter } from 'redux/selectors';
 // import css from './Task.module.css';
-import { toggleFollowing } from 'redux/tweetsSlice';
+import { addFollower, deleteFollower, toggleFollowing } from 'redux/operations';
+import {
+  ActiveButton,
+  Button,
+  StyledAvatar,
+  StyledCard,
+  StyledDownDiv,
+  StyledImage,
+  StyledImgDiv,
+  StyledLogo,
+  StyledPFollowers,
+  StyledPTweets,
+  StyledUpperDiv,
+} from './Tweet.styled';
+import logo from '../../images/logo.png';
+import img from '../../images/bg.png';
+import { formatNumber } from 'services/formatHandlers';
+import { useEffect, useState } from 'react';
+import { addToFollowings, deleteFromFollowings } from 'redux/tweetsSlice';
 
 export const Tweet = ({ tweet }) => {
-  
+  // const [followersNumber, setFollowersNumber] = useState(tweet.followers);
   const dispatch = useDispatch();
 
-  const handleToggle = () => dispatch(toggleFollowing(tweet.id));
+  // useEffect(() => {
+
+  // }, [followersNumber])
+
+  const handleToggle = () => {
+    dispatch(toggleFollowing(tweet));
+  };
   // на кнопке
+  const isFollowing = tweet.following;
+  console.log('object :>> ', isFollowing);
 
   return (
-    <div
-    //   className={css.wrapper}
-    >
-      <p
-      //   className={css.text}
-      >
-        {tweet.id}
-      </p>
-      <button type="button" onClick={handleToggle}></button>
-    </div>
+    <StyledCard>
+      <StyledUpperDiv>
+        <StyledLogo src={logo} alt="logo" />
+        {/* <StyledImage src={img} alt="background picture" /> */}
+      </StyledUpperDiv>
+      <StyledDownDiv>
+        <StyledImgDiv>
+          <StyledAvatar src={tweet.avatar} alt={tweet.name} />
+        </StyledImgDiv>
+        <StyledPTweets>{formatNumber(tweet.tweets)} tweets</StyledPTweets>
+        <StyledPFollowers>
+          {formatNumber(tweet.followers)} followers
+        </StyledPFollowers>
+        {isFollowing ? (
+          <ActiveButton
+            type="button"
+            onClick={() => {
+              handleToggle();
+              dispatch(deleteFollower(tweet));
+              // setFollowersNumber(tweet.followers);
+              // dispatch(deleteFromFollowings);
+              // в цьому місці змінювати на беку кількість фоловерів
+            }}
+          >
+            Following
+          </ActiveButton>
+        ) : (
+          <Button
+            type="button"
+            onClick={() => {
+              handleToggle();
+              dispatch(addFollower(tweet));
+              // dispatch(addToFollowings);
+              // setFollowersNumber(tweet.followers);
+            }}
+          >
+            Follow
+          </Button>
+        )}
+      </StyledDownDiv>
+    </StyledCard>
   );
 };

@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { statusFilters } from 'redux/constants';
 import { getStatusFilter } from 'redux/selectors';
 import { setStatusFilter } from 'redux/filtersSlice';
-import { Button } from 'components/Button/Buttom';
+
 // import css from './StatusFilter.module.css';
 import React, { useState } from 'react';
-import Select from 'react-select';
+
+import { StyledSelect } from './StatusFilter.styled';
 
 // export const StatusFilter = () => {
 //   const dispatch = useDispatch();
@@ -108,7 +109,7 @@ export default function FilterSelect() {
 
   return (
     <div className="Select">
-      <Select
+      <StyledSelect
         // defaultValue={options[0]}
         // value={filter}
         defaultValue={options[0]}

@@ -8,10 +8,9 @@ import { useLocation } from 'react-router-dom';
 
 const Tweets = () => {
   const location = useLocation();
-  // const backLinkLocationRef = useRef(location.state?.from ?? '/');
+
   return (
     <>
-      {/* <BackLink to={backLinkLocationRef.current}>Go back</BackLink> */}
       <BackLink to={location.state.from}>Go back</BackLink>
       <p>TweetsPage</p>
       <FilterSelect />
