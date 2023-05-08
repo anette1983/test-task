@@ -13,12 +13,10 @@ const options = [
 
 export default function FilterSelect() {
   const dispatch = useDispatch();
-  const filter = useSelector(getStatusFilter);
-  console.log('filter :>> ', filter);
+  
 
   const handleFilterChange = event => {
     const target = event.value;
-    // console.log('event.target :>> ', event);
     dispatch(setStatusFilter(target));
     dispatch(fetchTweets());
   };

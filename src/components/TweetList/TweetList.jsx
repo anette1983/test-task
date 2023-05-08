@@ -50,22 +50,6 @@ export const TweetList = () => {
     dispatch(fetchTweetsByPage(limit));
   };
 
-  //  const isLoading = useSelector(selectIsLoading);
-  //  const error = useSelector(selectError);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchTweets());
-  // }, [dispatch]);
-
-  console.log(
-    'tweets, following, unfollowed, visibleTweets :>> ',
-    tweets,
-    followings,
-    unfollowed,
-    visibleTweets
-  );
-
   const shouldShow = followings.length + unfollowed.length !== 12;
 
   return (

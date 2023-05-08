@@ -21,7 +21,6 @@ export const fetchTweetsByPage = createAsyncThunk(
   async (limit, thunkAPI) => {
     try {
       const response = await axios.get(`/users?page=1&limit=${limit}`);
-      console.log('response.data :>> ', response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
