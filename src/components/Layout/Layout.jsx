@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-// import styled from 'styled-components';
 import { StyledContainer, StyledHeader, StyledNavLink } from './Layout.styled';
 
 const Layout = () => {
@@ -15,7 +14,6 @@ const Layout = () => {
               <StyledNavLink to="/">Home</StyledNavLink>
             </li>
             <li>
-              {/* <StyledNavLink to="/tweets" state={{ from: '/' }}> */}
               <StyledNavLink to="/tweets" state={{ from: from }}>
                 Tweets
               </StyledNavLink>

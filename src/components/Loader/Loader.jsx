@@ -25,17 +25,4 @@ Loader.metadata = {
   filename: 'ThreeDots',
 };
 
-// {/* <Watch
-//   height="80"
-//   width="80"
-//   radius="48"
-//   color="#3f51b5"
-//   ariaLabel="watch-loading"
-//   wrapperStyle={{
-//     display: 'block',
-//     margin: '0 auto',
-//   }}
-//   visible={true}
-// /> */}
-
 export default Loader;

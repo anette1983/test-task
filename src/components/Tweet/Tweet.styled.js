@@ -73,17 +73,6 @@ export const StyledAvatarWrap = styled.div`
     inset 0px 4.39163px 3.29372px #fbf8ff;
   object-fit: contain;
   overflow: hidden;
-  /*  додати бокс шедоу і бордер ітд!!! */
-
-  /* width: 80px;
-  height: 80px;
-  object-fit: contain;
-  overflow: hidden;
-
-  border-radius: 50%;
-  background: #ebd8ff;
-  box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06), inset 0px -2.19582px 4.39163px #AE7BE3, inset 0px 4.39163px 3.29372px #FBF8FF;
-   */
 `;
 
 export const StyledAvatar = styled.img`
@@ -134,13 +123,6 @@ export const Button = styled.button`
   border-radius: 10px;
 
   color: #373737;
-  /* margin-top: 22px;
-  padding: 10px 7px;
-  width: 160px;
-  cursor: pointer;
-
-  border: none;
-  border-radius: 10px; */
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
 
   font-family: inherit;
@@ -170,13 +152,6 @@ export const ActiveButton = styled.button`
   border-radius: 10px;
 
   color: #373737;
-
-  /* margin-top: 22px;
-  padding: 10px 7px;
-  width: 160px;
-
-  border: none;
-  border-radius: 10px; */
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
 
   font-family: inherit;

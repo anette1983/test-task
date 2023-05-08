@@ -1,10 +1,7 @@
 import { BackLink } from 'components/Backlink/Backlink';
-import FilterSelect, {
-  StatusFilter,
-} from 'components/StatusFilter/StatusFilter';
+import FilterSelect from 'components/StatusFilter/StatusFilter';
 import { StyledP } from './Tweets.styled';
 import { TweetList } from 'components/TweetList/TweetList';
-// import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const Tweets = () => {

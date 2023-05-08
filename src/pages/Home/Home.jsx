@@ -1,4 +1,3 @@
-import { ActiveButton } from 'components/Tweet/Tweet.styled';
 import { StyledHPActiveBtn, StyledHeader, StyledSection } from './Home.styled';
 import { useNavigate } from 'react-router-dom';
 

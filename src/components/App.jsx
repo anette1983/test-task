@@ -5,8 +5,6 @@ import Layout from './Layout/Layout.jsx';
 const Home = lazy(() => import('../pages/Home/Home.jsx'));
 const Tweets = lazy(() => import('../pages/Tweets/Tweets.jsx'));
 
-// import { Card } from './Card/Card';
-
 export const App = () => {
   return (
     <Routes>
@@ -15,8 +13,6 @@ export const App = () => {
         <Route path="tweets" element={<Tweets />} />
         <Route path="*" element={<Home />} />
       </Route>
-
-      {/* перероверить, так ли */}
     </Routes>
   );
 };
