@@ -9,6 +9,7 @@ export const StyledContainer = styled.div`
 
 export const StyledHeader = styled.header`
   padding: 0 16px;
+  background-color: #ebd8ff;
   border-bottom: 1px solid #ececec;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -21,12 +22,12 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  color: #212121;
+  color: #5cd3a8;
   font-size: 22px;
   display: block;
   padding-top: 16px;
   padding-bottom: 16px;
   &.active {
-    color: orangered;
+    color: #471ca9;
   }
 `;

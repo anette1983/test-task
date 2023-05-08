@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  addFollower,
-  deleteFollower,
-  fetchTweets,
-  toggleFollowing,
-} from './operations';
+import { addFollower, deleteFollower, fetchTweets } from './operations';
 
 import {
   handleFulfilled,
@@ -69,7 +64,7 @@ const tweetsSlice = createSlice({
       .addCase(fetchTweets.fulfilled, handleFulfilled)
       .addCase(fetchTweets.pending, handlePending)
       .addCase(fetchTweets.rejected, handleRejected)
-      .addCase(toggleFollowing.fulfilled, handleToggleFullfilled)
+      // .addCase(toggleFollowing.fulfilled, handleToggleFullfilled)
       .addCase(addFollower.fulfilled, handleFulfilledAdd)
       .addCase(deleteFollower.fulfilled, handleFulfilledDelete);
   },

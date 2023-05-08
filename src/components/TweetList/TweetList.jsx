@@ -12,7 +12,9 @@ import { Tweet } from 'components/Tweet/Tweet';
 import { useEffect } from 'react';
 import { fetchTweets, fetchTweetsByPage } from 'redux/operations';
 import { useState } from 'react';
-import { Container } from './TweetList.styled';
+import { Container, StyledWrapper } from './TweetList.styled';
+import { Button } from 'components/Tweet/Tweet.styled';
+import Loader from 'components/Loader/Loader';
 
 // перенести в селекторы
 export const selectIsLoading = state => state.tweets.isLoading;
@@ -37,16 +39,15 @@ export const TweetList = () => {
   const { followings, tweets, unfollowed } = useSelector(getFollowings);
   const isLoading = useSelector(getIsLoading);
 
-  // console.log('tweets :>> ', tweets);
   const statusFilter = useSelector(getStatusFilter);
-  // console.log('statusFuilter :>> ', statusFilter);
+
   const visibleTweets = getVisibleTweets(
     tweets,
     followings,
     unfollowed,
     statusFilter
   );
-  console.log('visibleTweets :>> ', visibleTweets.length);
+
   const dispatch = useDispatch();
 
   const maxTweets = 12;
@@ -68,7 +69,13 @@ export const TweetList = () => {
   //   dispatch(fetchTweets());
   // }, [dispatch]);
 
-  console.log('visibleTweets :>> ', visibleTweets.length);
+  console.log(
+    'tweets, following, unfollowed, visibleTweets :>> ',
+    tweets,
+    followings,
+    unfollowed,
+    visibleTweets
+  );
 
   return (
     <>
@@ -79,9 +86,13 @@ export const TweetList = () => {
           <Tweet key={tweet.id} tweet={tweet} />
         ))}
       </Container>
-      {visibleTweets.length < maxTweets && !isLoading && (
-        <button onClick={handleLoadMoreClick}>LoadMore</button>
-      )}
+      <StyledWrapper>
+        {(visibleTweets.length < maxTweets || visibleTweets.length <= 3) &&
+          !isLoading && (
+            <Button onClick={handleLoadMoreClick}>Load more</Button>
+          )}
+        {isLoading && <Loader />}
+      </StyledWrapper>
     </>
   );
 };

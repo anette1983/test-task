@@ -5,6 +5,7 @@ import { StyledContainer, StyledHeader, StyledNavLink } from './Layout.styled';
 
 const Layout = () => {
   const location = useLocation();
+  const from = location?.state?.from ?? '/';
   return (
     <>
       <StyledHeader>
@@ -15,7 +16,7 @@ const Layout = () => {
             </li>
             <li>
               {/* <StyledNavLink to="/tweets" state={{ from: '/' }}> */}
-              <StyledNavLink to="/tweets" state={{ from: location }}>
+              <StyledNavLink to="/tweets" state={{ from: from }}>
                 Tweets
               </StyledNavLink>
             </li>

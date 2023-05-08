@@ -8,16 +8,22 @@ const StyledLink = styled(Link)`
   gap: 4px;
   /* padding: 8px 0; */
   padding: 24px 8px;
-  color: black;
+  color: #373737;
   text-decoration: none;
   font-weight: 500;
   text-transform: uppercase;
 
   :hover {
-    color: orangered;
+    /* color: orangered; */
+    color: #5736a3;
+
+    /* linear-gradient(114.99deg, #471ca9 -0.99%, #5736a3 54.28%, #4b2a99 78.99%); */
   }
 `;
 
+const StyledArrow = styled(HiArrowNarrowLeft)`
+  /* color: #373737; */
+`;
 export const BackLink = ({ to, children }) => {
   return (
     <StyledLink to={to}>

@@ -29,19 +29,19 @@ export const fetchTweetsByPage = createAsyncThunk(
   }
 );
 
-export const toggleFollowing = createAsyncThunk(
-  'tweets/toggleFollowing',
-  async (user, thunkAPI) => {
-    try {
-      const response = await axios.put(`/users/${user.id}`, {
-        following: !user.following,
-      });
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
+// export const toggleFollowing = createAsyncThunk(
+//   'tweets/toggleFollowing',
+//   async (user, thunkAPI) => {
+//     try {
+//       const response = await axios.put(`/users/${user.id}`, {
+//         following: !user.following,
+//       });
+//       return response.data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
 
 // import axios from 'axios';
 
@@ -62,12 +62,27 @@ export const toggleFollowing = createAsyncThunk(
 //   }
 // );
 
+// export const addFollower = createAsyncThunk(
+//   'tweets/addFollower',
+//   async (user, thunkAPI) => {
+//     try {
+//       const response = await axios.put(`/users/${user.id}`, {
+//         followers: user.followers + 1,
+//       });
+//       return response.data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
 export const addFollower = createAsyncThunk(
   'tweets/addFollower',
   async (user, thunkAPI) => {
     try {
       const response = await axios.put(`/users/${user.id}`, {
+        ...user,
         followers: user.followers + 1,
+        following: !user.following,
       });
       return response.data;
     } catch (e) {
@@ -76,12 +91,27 @@ export const addFollower = createAsyncThunk(
   }
 );
 
+// export const deleteFollower = createAsyncThunk(
+//   'tweets/deleteFollower',
+//   async (user, thunkAPI) => {
+//     try {
+//       const response = await axios.put(`/users/${user.id}`, {
+//         followers: user.followers - 1,
+//       });
+//       return response.data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
 export const deleteFollower = createAsyncThunk(
   'tweets/deleteFollower',
   async (user, thunkAPI) => {
     try {
       const response = await axios.put(`/users/${user.id}`, {
+        ...user,
         followers: user.followers - 1,
+        following: !user.following,
       });
       return response.data;
     } catch (e) {

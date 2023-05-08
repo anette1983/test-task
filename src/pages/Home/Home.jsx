@@ -1,9 +1,21 @@
-import { StyledSection } from './Home.styled';
+import { ActiveButton } from 'components/Tweet/Tweet.styled';
+import { StyledHPActiveBtn, StyledHeader, StyledSection } from './Home.styled';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <StyledSection>
-      <p>Homepage</p>
+      <StyledHeader>
+        <h1>Welcome to the tweets app!</h1>
+        <StyledHPActiveBtn
+          onClick={() => {
+            navigate('/tweets');
+          }}
+        >
+          To the tweets
+        </StyledHPActiveBtn>
+      </StyledHeader>
     </StyledSection>
   );
 };

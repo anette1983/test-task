@@ -6,10 +6,10 @@ import {
   ActiveButton,
   Button,
   StyledAvatar,
+  StyledAvatarWrap,
+  StyledBottomDiv,
   StyledCard,
-  StyledDownDiv,
-  StyledImage,
-  StyledImgDiv,
+  StyledCardContent,
   StyledLogo,
   StyledPFollowers,
   StyledPTweets,
@@ -29,54 +29,54 @@ export const Tweet = ({ tweet }) => {
 
   // }, [followersNumber])
 
-  const handleToggle = () => {
-    dispatch(toggleFollowing(tweet));
-  };
-  // на кнопке
+  // const handleToggle = () => {
+  //   dispatch(toggleFollowing(tweet));
+  // };
+  // // на кнопке
   const isFollowing = tweet.following;
-  console.log('object :>> ', isFollowing);
 
   return (
     <StyledCard>
-      <StyledUpperDiv>
-        <StyledLogo src={logo} alt="logo" />
-        {/* <StyledImage src={img} alt="background picture" /> */}
-      </StyledUpperDiv>
-      <StyledDownDiv>
-        <StyledImgDiv>
+      <StyledCardContent>
+        <StyledUpperDiv>
+          <StyledLogo src={logo} alt="logo" width={76} />
+        </StyledUpperDiv>
+        <StyledAvatarWrap>
           <StyledAvatar src={tweet.avatar} alt={tweet.name} />
-        </StyledImgDiv>
-        <StyledPTweets>{formatNumber(tweet.tweets)} tweets</StyledPTweets>
-        <StyledPFollowers>
-          {formatNumber(tweet.followers)} followers
-        </StyledPFollowers>
-        {isFollowing ? (
-          <ActiveButton
-            type="button"
-            onClick={() => {
-              handleToggle();
-              dispatch(deleteFollower(tweet));
-              // setFollowersNumber(tweet.followers);
-              // dispatch(deleteFromFollowings);
-              // в цьому місці змінювати на беку кількість фоловерів
-            }}
-          >
-            Following
-          </ActiveButton>
-        ) : (
-          <Button
-            type="button"
-            onClick={() => {
-              handleToggle();
-              dispatch(addFollower(tweet));
-              // dispatch(addToFollowings);
-              // setFollowersNumber(tweet.followers);
-            }}
-          >
-            Follow
-          </Button>
-        )}
-      </StyledDownDiv>
+        </StyledAvatarWrap>
+        <StyledBottomDiv>
+          <StyledPTweets>{formatNumber(tweet.tweets)} tweets</StyledPTweets>
+          <StyledPFollowers>
+            {formatNumber(tweet.followers)} followers
+          </StyledPFollowers>
+          {isFollowing ? (
+            <ActiveButton
+              type="button"
+              onClick={() => {
+                // handleToggle();
+                dispatch(deleteFollower(tweet));
+                // setFollowersNumber(tweet.followers);
+                // dispatch(deleteFromFollowings);
+                // в цьому місці змінювати на беку кількість фоловерів
+              }}
+            >
+              Following
+            </ActiveButton>
+          ) : (
+            <Button
+              type="button"
+              onClick={() => {
+                // handleToggle();
+                dispatch(addFollower(tweet));
+                // dispatch(addToFollowings);
+                // setFollowersNumber(tweet.followers);
+              }}
+            >
+              Follow
+            </Button>
+          )}
+        </StyledBottomDiv>
+      </StyledCardContent>
     </StyledCard>
   );
 };

@@ -13,7 +13,7 @@ export const handleFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.items = action.payload;
-  state.unfollowed = action.payload;
+  // state.unfollowed = action.payload;
 };
 
 export const handleToggleFullfilled = (state, action) => {
@@ -48,15 +48,20 @@ export const handleToggleFullfilled = (state, action) => {
 export const handleFulfilledAdd = (state, action) => {
   state.isLoading = false;
   state.error = null;
+
   const index = state.items.findIndex(tweet => tweet.id === action.payload.id);
   state.items.splice(index, 1, action.payload);
+  // index.followers = action.payload.followers;
 };
 
 export const handleFulfilledDelete = (state, action) => {
   state.isLoading = false;
   state.error = null;
   const index = state.items.findIndex(tweet => tweet.id === action.payload.id);
+  
   state.items.splice(index, 1, action.payload);
+  console.log('index :>> ', index);
+  // index.followers = action.payload.followers;
 };
 
 // state.items = [...state.items, ...action.payload];
