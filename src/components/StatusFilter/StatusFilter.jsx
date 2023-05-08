@@ -1,5 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { getStatusFilter } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
+
 import { setStatusFilter } from 'redux/filtersSlice';
 
 import { StyledSelect } from './StatusFilter.styled';
@@ -13,7 +13,6 @@ const options = [
 
 export default function FilterSelect() {
   const dispatch = useDispatch();
-  
 
   const handleFilterChange = event => {
     const target = event.value;
