@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addFollower, deleteFollower } from 'redux/operations';
 import {
   ActiveButton,
@@ -59,3 +60,5 @@ export const Tweet = ({ tweet }) => {
     </StyledCard>
   );
 };
+
+Tweet.propTypes = PropTypes.object.isRequired;

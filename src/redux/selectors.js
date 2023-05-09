@@ -1,7 +1,7 @@
 export const getStatusFilter = state => state.filter.status;
 export const getTweets = state => state.tweets.items;
 export const getIsLoading = state => state.tweets.isLoading;
-
+export const getLimit = state => state.tweets.limit;
 
 export const getFollowings = state => {
   const tweets = getTweets(state);

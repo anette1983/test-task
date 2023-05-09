@@ -1,16 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getStatusFilter, getFollowings, getIsLoading } from 'redux/selectors';
+import {
+  getStatusFilter,
+  getFollowings,
+  getIsLoading,
+  getLimit,
+} from 'redux/selectors';
 import { statusFilters } from 'redux/constants';
 import { Tweet } from 'components/Tweet/Tweet';
 import { useEffect } from 'react';
 import { fetchTweetsByPage } from 'redux/operations';
-import { useState } from 'react';
 import { Container, StyledWrapper } from './TweetList.styled';
 import { Button } from 'components/Tweet/Tweet.styled';
 import Loader from 'components/Loader/Loader';
-
-export const selectIsLoading = state => state.tweets.isLoading;
-export const selectError = state => state.tweets.error;
+import { changeLimit } from 'redux/tweetsSlice';
 
 const getVisibleTweets = (tweets, following, unfollowed, statusFilter) => {
   switch (statusFilter) {
@@ -24,13 +26,11 @@ const getVisibleTweets = (tweets, following, unfollowed, statusFilter) => {
 };
 
 export const TweetList = () => {
-  const [limit, setLimit] = useState(3);
-  // const [maxTweets, setMaxTweets] = useState(12);
   const { followings, tweets, unfollowed } = useSelector(getFollowings);
   const isLoading = useSelector(getIsLoading);
+  const limit = useSelector(getLimit);
 
   const statusFilter = useSelector(getStatusFilter);
-  // const tweets = useSelector(getModifiedTweets);
 
   const visibleTweets = getVisibleTweets(
     tweets,
@@ -46,8 +46,8 @@ export const TweetList = () => {
   }, [dispatch, limit]);
 
   const handleLoadMoreClick = () => {
-    setLimit(prevLimit => prevLimit + 3);
     dispatch(fetchTweetsByPage(limit));
+    dispatch(changeLimit(3));
   };
 
   const shouldShow = followings.length + unfollowed.length !== 12;

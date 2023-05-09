@@ -1,6 +1,6 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
-// import { Watch } from  'react-loader-spinner'
+
 
 const Loader = props => (
   <ContentLoader

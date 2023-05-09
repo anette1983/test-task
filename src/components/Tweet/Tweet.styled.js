@@ -81,7 +81,6 @@ export const StyledAvatar = styled.img`
   border: 8px solid transparent;
   box-sizing: border-box;
 `;
-// Можливо, це не потрібно
 
 export const StyledBottomDiv = styled.div`
   width: 100%;

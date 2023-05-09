@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -11,6 +12,7 @@ export const fetchTweets = createAsyncThunk(
       const response = await axios.get('/users');
       return response.data;
     } catch (e) {
+      toast.error('Something went wrong! :(');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -23,6 +25,7 @@ export const fetchTweetsByPage = createAsyncThunk(
       const response = await axios.get(`/users?page=1&limit=${limit}`);
       return response.data;
     } catch (e) {
+      toast.error('Something went wrong! :(');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -39,6 +42,7 @@ export const addFollower = createAsyncThunk(
       });
       return response.data;
     } catch (e) {
+      toast.error('Something went wrong! :(');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -55,6 +59,7 @@ export const deleteFollower = createAsyncThunk(
       });
       return response.data;
     } catch (e) {
+      toast.error('Something went wrong! :(');
       return thunkAPI.rejectWithValue(e.message);
     }
   }

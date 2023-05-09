@@ -16,6 +16,7 @@ import {
 
 const tweetsInitialState = {
   items: [],
+  limit: 3,
   isLoading: false,
   error: null,
 };
@@ -23,6 +24,14 @@ const tweetsInitialState = {
 const tweetsSlice = createSlice({
   name: 'tweets',
   initialState: tweetsInitialState,
+  reducers: {
+    changeLimit: (state, action) => {
+      state.limit += action.payload;
+    },
+    deleteLimit: (state, action) => {
+      state.limit = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchTweets.fulfilled, handleFulfilled)
@@ -40,5 +49,6 @@ const tweetsSlice = createSlice({
   },
 });
 
-export default tweetsSlice.reducer;
+export const { changeLimit, deleteLimit } = tweetsSlice.actions;
 
+export default tweetsSlice.reducer;
