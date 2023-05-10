@@ -29,7 +29,7 @@ export const Tweet = ({ tweet }) => {
           <StyledLogo src={logo} alt="logo" width={76} />
         </StyledUpperDiv>
         <StyledAvatarWrap>
-          <StyledAvatar src={tweet.avatar} alt={tweet.name} />
+          <StyledAvatar src={tweet.avatar} alt={tweet.user} width={62} />
         </StyledAvatarWrap>
         <StyledBottomDiv>
           <StyledPTweets>{formatNumber(tweet.tweets)} tweets</StyledPTweets>
